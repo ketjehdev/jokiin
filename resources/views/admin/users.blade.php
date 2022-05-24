@@ -70,8 +70,8 @@
                                  <tr style="white-space: nowrap">
                                      <th>No.</th>
                                      <th>Nama</th>
-                                     <th>Username</th>
-                                     <th>Role</th>
+                                     <th class="text-center">Username</th>
+                                     <th class="text-center">Role</th>
                                      <th>Dibuat</th>
                                      <th>Handle</th>
                                  </tr>
@@ -85,8 +85,14 @@
                                     <tr style="white-space: nowrap">
                                         <th>{{ $no++ }}</th>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->username }}</td>
-                                        <td>{{ Str::ucfirst($item->role) }}</td>
+                                        <td class="text-center">{{ $item->username }}</td>
+                                        <td class="text-center">
+                                            @if ($item->role == "penjoki")
+                                                {{ Str::ucfirst($item->role) . " " . "(" . $item->bidang . ")" }}
+                                            @else
+                                                {{ Str::ucfirst($item->role) }}
+                                            @endif
+                                        </td>
                                         <td>{{ date('d M Y', strtotime($item->created_at)) }}</td>
                                         <td>
                                             <a href="{{ url('/deleteUser/'.$item->id) }}" style="text-decoration: none">
