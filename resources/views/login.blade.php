@@ -15,9 +15,18 @@
     {{-- link stylesheet asset --}}
     <link rel="stylesheet" href="{{ asset('css/authenticate.css') }}">
 
+    {{-- link stylesheet splash --}}
+    <link rel="stylesheet" href="{{ asset('css/splash.css') }}">
+
     <title>Jokiin Aja | Login</title>
 </head>
 <body>
+    
+    <!-- splash screen -->
+    <div class="splash" style="background-color: #fff;">
+        <img src="{{ asset('img/jokiin_logo.png') }}" class="fade-in">
+    </div>
+    <!-- end splash screen -->
 
     <div class="banner d-flex" style="width: 100%; height: 100vh;">
         <div class="col-8 box-img bg-primary">
@@ -62,5 +71,8 @@
     {{-- script API bootstrap 5 --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    {{-- script js --}}
+    <script src="{{ asset('js/splash.js') }}"></script>
 </body>
 </html>

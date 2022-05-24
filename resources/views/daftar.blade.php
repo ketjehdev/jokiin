@@ -28,7 +28,7 @@
             <h3 class="mt-4 mb-0 text-center">Jokiin</h3>
             <p class="text-secondary text-center">- Daftar Akun -</p>
 
-            <form action="/loginAuth" method="POST" style="width: 100%;" class="mx-2 mt-2">
+            <form action="/daftarAuth" method="POST" style="width: 100%;" class="mx-2 mt-2">
                 @csrf
                 <span>Name <span class="text-danger">*</span></span><br>
                 @error('name')
@@ -57,7 +57,7 @@
                 </span>
             </form>
         </div>
-    </div>
+    </div>s
 
     {{-- script API bootstrap 5 --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

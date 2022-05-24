@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Route::group(['middleware' => 'auth'], function () {
+//     Route::group(['cekrole' => 'admin'], function () {
+//         route::get('/adminDash', [])->name('adminDash');
+//     });
+// });
+
 // login authentication
 Route::get('/login', function () {
     return view('login');

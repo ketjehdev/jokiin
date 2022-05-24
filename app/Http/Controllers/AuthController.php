@@ -22,8 +22,8 @@ class AuthController extends Controller
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
 
-            if (auth()->user()->role = "admin") {
-                return view('admin.dashboard');
+            if (auth()->user()->role == "admin") {
+                return redirect('/');
             }
         }
 
@@ -31,9 +31,30 @@ class AuthController extends Controller
     }
 
     // daftar auth
-    public function daftar_authenticate()
+    public function daftar_authenticate(Request $request)
     {
-        User::create();
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'username' => 'required',
+                'password' => 'required',
+            ],
+            [
+                'name.required' => 'Kolom nama gak boleh kosong!',
+                'username.required' => 'Kolom username gak boleh kosong!',
+                'password.required' => 'Kolom password gak boleh kosong!',
+            ]
+        );
+
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'role' => 'user',
+        ]);
+
+        return redirect(route('login'));
     }
 
     // logout

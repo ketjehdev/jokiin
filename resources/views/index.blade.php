@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
                     <a href="{{ route('login') }}" class="nav-item nav-link btn mx-2">Login</a>
-                    <a href="#" class="nav-item nav-link btn btn-primary text-light">Daftar</a>
+                    <a href="{{ route('daftar') }}" class="nav-item nav-link btn btn-primary text-light">Daftar</a>
                 </div>
             </div>
         </div>
