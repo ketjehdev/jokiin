@@ -18,4 +18,12 @@ class AdminController extends Controller
         ];
         return view('admin.dash', $datas);
     }
+
+    // user management
+    public function user_manage()
+    {
+        $data = User::all();
+
+        return view('admin.users', compact('data'));
+    }
 }

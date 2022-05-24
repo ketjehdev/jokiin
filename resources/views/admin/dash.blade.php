@@ -31,8 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
                     <a href="{{ route('adminDash') }}" class="nav-item nav-link btn active">Home</a>
-                    <a href="{{ route('adminDash') }}" class="nav-item nav-link btn">Users management</a>
-                    <a href="{{ route('adminDash') }}" class="nav-item nav-link btn">Report</a>
+                    <a href="{{ route('adminUser') }}" class="nav-item nav-link btn">Users management</a>
                     <a href="{{ route('logout') }}" class="nav-item nav-link btn text-danger" style="border: 1px solid red">Log out</a>
                 </div>
             </div>      

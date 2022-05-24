@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'cekrole:admin'], function () {
         route::get('/adminDash', [AdminController::class, 'index'])->name('adminDash');
+        route::get('/adminUser', [AdminController::class, 'user_manage'])->name('adminUser');
     });
 });
 
