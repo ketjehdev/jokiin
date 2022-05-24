@@ -30,7 +30,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto">
-                    <a href="#" class="nav-item nav-link btn">Login</a>
+                    <a href="{{ route('login') }}" class="nav-item nav-link btn mx-2">Login</a>
                     <a href="#" class="nav-item nav-link btn btn-primary text-light">Daftar</a>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 Kami memiliki para guru dan penjoki handal dalam menyelesaikan semua
                 tugas anda yang pasti aman dan terpercaya!
             </p>
-            <button class="btn btn-primary" style="width:100%">Mulai sekarang</button>
+            <a href="{{ route('login') }}" class="btn btn-primary" style="width:100%">Mulai sekarang</a>
         </div>
 
         <div class="imgBx">
