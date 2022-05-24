@@ -26,4 +26,27 @@ class AdminController extends Controller
 
         return view('admin.users', compact('data'));
     }
+
+    public function tambah_penjoki(Request $request)
+    {
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->role = 'penjoki';
+        $user->bidang = $request->bidang;
+        $user->password = bcrypt($request->password);
+
+        $user->save();
+
+        return redirect('adminUser')->with('success', 'Penjoki berhasil ditambahkan!');
+    }
+
+    public function del_user($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/adminUser')->with('warning', 'User berhasil di hapus');
+    }
 }

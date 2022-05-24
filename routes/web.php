@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'cekrole:admin'], function () {
         route::get('/adminDash', [AdminController::class, 'index'])->name('adminDash');
         route::get('/adminUser', [AdminController::class, 'user_manage'])->name('adminUser');
+        route::post('/tambahPenjoki', [AdminController::class, 'tambah_penjoki'])->name('tambahPenjoki');
+        route::get('/deleteUser/{id}', [AdminController::class, 'del_user']);
     });
 });
 

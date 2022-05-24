@@ -44,21 +44,36 @@
 
         <div class="row d-flex flex-row mb-0" style="margin: 0 15px 0 0">
             <div class="col-xl-12 col-md-3 mx-2 my-2">
+            @if(session()->has('warning'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 100%">
+                    {{ session('warning') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
              <div class="card">
                  <div class="card-header d-flex align-items-center justify-content-between">
                      <h5>List data user</h5>
-                     <button class="btn btn-success">Tambah Penjoki</button>
+                     <button class="btn btn-success" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Tambah Penjoki</button>
                  </div>
                  <div class="card-body">
                      <div class="table-responsive">
                          <table class="table table-striped">
                              <thead>
-                                 <tr>
+                                 <tr style="white-space: nowrap">
                                      <th>No.</th>
                                      <th>Nama</th>
                                      <th>Username</th>
                                      <th>Role</th>
                                      <th>Dibuat</th>
+                                     <th>Handle</th>
                                  </tr>
                              </thead>
                              <tbody>
@@ -73,6 +88,11 @@
                                         <td>{{ $item->username }}</td>
                                         <td>{{ Str::ucfirst($item->role) }}</td>
                                         <td>{{ date('d M Y', strtotime($item->created_at)) }}</td>
+                                        <td>
+                                            <a href="{{ url('/deleteUser/'.$item->id) }}" style="text-decoration: none">
+                                                <span class="text-danger">Delete</span>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                              </tbody>
@@ -82,7 +102,39 @@
              </div>
           </div>
         </div>
-          
+
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">Tambah Penjoki </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="/tambahPenjoki" method="POST">
+                      @csrf
+                      <label for="name">Nama</label>
+                      <input type="text" name="name" id="name" class="form-control" placeholder="Nama lengkap penjoki">
+                        <br>
+                      <label for="username">Username</label>
+                      <input type="text" name="username" id="username" class="form-control" placeholder="Username penjoki">
+                        <br>
+
+                      <label for="bidang">Bidang</label>
+                      <input type="text" name="bidang" id="bidang" class="form-control" placeholder="Bidang pelajaran penjoki">
+                        <br>
+
+                      <label for="password">Password</label>
+                      <input type="password" name="password" id="password" class="form-control" placeholder="Password penjoki">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Tambahkan penjoki</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
     {{-- script API bootstrap 5 --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
