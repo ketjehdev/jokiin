@@ -28,22 +28,33 @@
             <h3 class="mt-4 mb-0 text-center">Jokiin</h3>
             <p class="text-secondary text-center">- Login Page -</p>
 
-            {{-- @if(session()->has('loginError'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @if(session()->has('loginError'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%">
                     {{ session('loginError') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            @endif --}}
+            @endif
 
-            <form action="/loginAuth" method="POST" style="width: 100%;" class="mx-2 mt-5">
+            <form action="/loginAuth" method="POST" style="width: 100%;" class="mx-2 mt-2">
                 @csrf
-                <span>Username <span class="text-danger">*</span></span>
-                <input type="text" class="form-control mb-4" autofocus required placeholder="Masukan username kamu" name="username">
+                <span>Username <span class="text-danger">*</span></span><br>
+                @error('username')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <input type="text" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror mb-4" autofocus placeholder="Masukan username kamu" name="username">
 
-                <span>Password <span class="text-danger">*</span></span>
-                <input type="password" class="form-control" required placeholder="Masukan password kamu" name="password">
+                <span>Password <span class="text-danger">*</span></span><br>
+                @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukan password kamu" name="password">
                 <button class="btn btn-primary mt-4" style="width: 100%;">Masuk</button>
-
+                <span class="text-center" style="display: block">
+                    Belum mempunyai akun jokiin? <br>
+                    <a href="">
+                        daftar sekarang!
+                    </a>
+                </span>
             </form>
         </div>
     </div>

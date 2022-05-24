@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('index');
 });
 
+// login authentication
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+Route::post('/loginAuth', [AuthController::class, 'login_authenticate'])->name('loginAuth');
+
+// daftar authentication
+Route::get('/daftar', function () {
+    return view('daftar');
+})->name('daftar');
+Route::post('/daftarAuth', [AuthController::class, 'daftar_authenticate'])->name('daftarAuth');
+
+// logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
