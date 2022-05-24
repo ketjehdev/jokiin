@@ -55,7 +55,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'password' => bcrypt($request->password),
-            'role' => 'user',
+            'role' => 'pelajar',
         ]);
 
         return redirect()->route('login');
