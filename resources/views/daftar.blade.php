@@ -15,28 +15,27 @@
     {{-- link stylesheet asset --}}
     <link rel="stylesheet" href="{{ asset('css/authenticate.css') }}">
 
-    <title>Jokiin Aja | Login</title>
+    <title>Jokiin Aja | Daftar</title>
 </head>
 <body>
 
     <div class="banner d-flex" style="width: 100%; height: 100vh;">
         <div class="col-8 box-img bg-primary">
-            <img src="{{ asset('img/login.jpg') }}" alt="login-bg" class="bg">
+            <img src="{{ asset('img/daftar.jpg') }}" alt="login-bg" class="bg">
         </div>
         <div class="col-4 forum d-flex flex-column align-items-center">
             <img src="{{ asset('img/jokiin_logo.png') }}" alt="login-bg" class="bg_forum">
             <h3 class="mt-4 mb-0 text-center">Jokiin</h3>
-            <p class="text-secondary text-center">- Login Page -</p>
-
-            @if(session()->has('loginError'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%">
-                    {{ session('loginError') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
+            <p class="text-secondary text-center">- Daftar Akun -</p>
 
             <form action="/loginAuth" method="POST" style="width: 100%;" class="mx-2 mt-2">
                 @csrf
+                <span>Name <span class="text-danger">*</span></span><br>
+                @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+                <input type="text" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror mb-4" autofocus placeholder="Masukan name kamu" name="name">
+
                 <span>Username <span class="text-danger">*</span></span><br>
                 @error('username')
                     <span class="text-danger">{{ $message }}</span>
@@ -47,12 +46,13 @@
                 @error('password')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
+                
                 <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukan password kamu" name="password">
-                <button class="btn btn-primary mt-4" style="width: 100%;">Masuk</button>
+                <button class="btn btn-success mt-4" style="width: 100%;">Masuk</button>
                 <span class="text-center" style="display: block">
-                    Belum mempunyai akun jokiin? <br>
-                    <a href="{{ route('daftar') }}">
-                        daftar sekarang!
+                    Sudah mempunyai akun jokiin? <br>
+                    <a href="{{ route('login') }}">
+                        login sekarang!
                     </a>
                 </span>
             </form>
