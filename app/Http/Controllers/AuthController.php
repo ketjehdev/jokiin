@@ -23,7 +23,11 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (auth()->user()->role == "admin") {
-                return redirect('/');
+                return redirect()->route('adminDash');
+            } else if (auth()->user()->role = "penjoki") {
+                return redirect()->route('penjokiDash');
+            } else {
+                return redirect()->route('userDash');
             }
         }
 
@@ -54,13 +58,13 @@ class AuthController extends Controller
             'role' => 'user',
         ]);
 
-        return redirect(route('login'));
+        return redirect()->route('login');
     }
 
     // logout
     public function logout()
     {
         Auth::logout();
-        return redirect(route('login'));
+        return redirect()->route('login');
     }
 }

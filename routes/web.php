@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -17,11 +18,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Route::group(['middleware' => 'auth'], function () {
-//     Route::group(['cekrole' => 'admin'], function () {
-//         route::get('/adminDash', [])->name('adminDash');
-//     });
-// });
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'cekrole:admin'], function () {
+        route::get('/adminDash', [AdminController::class, 'index'])->name('adminDash');
+    });
+});
 
 // login authentication
 Route::get('/login', function () {
